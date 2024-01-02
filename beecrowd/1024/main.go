@@ -14,9 +14,10 @@ func main() {
 
 	scanner := bufio.NewScanner(os.Stdin)
 
+    first_line := true
     var data string
     for scanner.Scan() {
-        if scanner.Text() != "" {
+        if scanner.Text() != "" && !first_line {
             line := []rune(scanner.Text())
                 for i := range line {
                     if isLetter(line[i]) {
@@ -36,6 +37,7 @@ func main() {
                 }
                 data += string(line)+"\n"
         }
+        first_line = false
     }
     fmt.Println(data) 
 }
