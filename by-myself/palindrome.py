@@ -8,8 +8,8 @@ def swap(s: str)-> str:
 def main ():
     with open("./palindromes") as f:
         file = f.readlines()
-        for line in file:
-            line = line.strip("\n")
+        for l in file:
+            line = l.strip("\n").replace(" ", "").lower()
             if line == "":
                 print (True, line)
             elif len(line) % 2 != 0:
@@ -18,18 +18,18 @@ def main ():
                 end = line[middle+1:]
                 #print(start.lower(), swap(end), start.lower() == swap(end))
                 if start.lower() == swap(end):
-                    print(True, line)
+                    print(True, l)
                 else:
-                    print(False, line)
+                    print(False, l)
             else:
                 middle = len(line)//2
                 start = line[:middle]
                 end = line[middle:]
                 #print(start.lower(), swap(end))
                 if start.lower() == swap(end):
-                    print(True, line)
+                    print(True, l)
                 else:
-                    print(False, line)
+                    print(False, l)
 
 if __name__ == "__main__":
     main()
